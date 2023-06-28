@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ImagesViewModel @Inject constructor(
+class SharedViewModel @Inject constructor(
     private val repository: NasaRepository
 ) : ViewModel() {
 

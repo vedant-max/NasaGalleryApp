@@ -6,7 +6,7 @@ import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import co.vance.nasagalleryapp.R
 import co.vance.nasagalleryapp.databinding.ImageListFragmentBinding
@@ -18,7 +18,7 @@ class ImageListFragment : Fragment(R.layout.image_list_fragment), OnImageClickLi
 
   private var _binding: ImageListFragmentBinding? = null
   private val binding get() = _binding!!
-  private val viewModel: ImagesViewModel by viewModels()
+  private val viewModel: SharedViewModel by activityViewModels()
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
@@ -30,21 +30,14 @@ class ImageListFragment : Fragment(R.layout.image_list_fragment), OnImageClickLi
         adapter = imageListAdapter
         setHasFixedSize(true)
       }
-      btnTryAgain.setOnClickListener {
-        Log.d(TAG, "onViewCreated: btnTryAgain clicked")
-        viewModel.getImages()
-      }
     }
 
     viewModel.images.observe(viewLifecycleOwner) { result ->
       imageListAdapter.submitList(result.data)
       with(binding) {
         loadingAnim.isVisible = result is DataState.Loading && result.data.isNullOrEmpty()
-        // errorAnim.isVisible = result is DataState.Error && result.data.isNullOrEmpty()
-        // Log.d(TAG, "error: ${errorAnim.isVisible}")
-        // tvError.isVisible = result is DataState.Error && result.data.isNullOrEmpty()
         errorLayout.isVisible = result is DataState.Error && result.data.isNullOrEmpty()
-        tvError.text = result.error?.localizedMessage + ". Please try Again."
+        tvError.text = getString(R.string.error, result.error?.localizedMessage)
       }
     }
   }
@@ -52,7 +45,6 @@ class ImageListFragment : Fragment(R.layout.image_list_fragment), OnImageClickLi
   override fun onImageClick(position: Int) {
     val action = ImageListFragmentDirections.actionGlobalImageDetailFragment(position.toString())
     findNavController().navigate(action)
-    Log.d(TAG, "onImageClick: $position")
   }
 
   override fun onDestroy() {
