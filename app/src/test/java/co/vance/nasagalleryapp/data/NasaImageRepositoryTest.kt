@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.net.HttpURLConnection
 
 @DisplayName("NasaRepositoryTest")
-class NasaRepositoryTest {
+class NasaImageRepositoryTest {
   private lateinit var mockWebServer: MockWebServer
   private lateinit var baseUrl: HttpUrl
   private var service: NasaService = mockk(relaxed = true)

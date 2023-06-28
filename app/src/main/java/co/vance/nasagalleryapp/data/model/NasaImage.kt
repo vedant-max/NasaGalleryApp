@@ -1,6 +1,6 @@
 package co.vance.nasagalleryapp.data.model
 
-data class Nasa(
+data class NasaImage(
   val copyright: String,
   val date: String,
   val explanation: String,

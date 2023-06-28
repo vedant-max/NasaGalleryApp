@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import co.vance.nasagalleryapp.data.NasaRepository
-import co.vance.nasagalleryapp.data.model.Nasa
+import co.vance.nasagalleryapp.data.model.NasaImage
 import co.vance.nasagalleryapp.util.DataState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -16,8 +16,8 @@ class SharedViewModel @Inject constructor(
     private val repository: NasaRepository
 ) : ViewModel() {
 
-    private val _images: MutableLiveData<DataState<List<Nasa>>> = MutableLiveData()
-    val images: LiveData<DataState<List<Nasa>>> get() = _images
+    private val _images: MutableLiveData<DataState<List<NasaImage>>> = MutableLiveData()
+    val images: LiveData<DataState<List<NasaImage>>> get() = _images
 
     init {
         viewModelScope.launch {
