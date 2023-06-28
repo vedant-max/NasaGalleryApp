@@ -8,7 +8,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.PagerSnapHelper
 import co.vance.nasagalleryapp.R
 import co.vance.nasagalleryapp.databinding.FragmentImageDetailBinding
-import co.vance.nasagalleryapp.presentation.imageList.SharedViewModel
+import co.vance.nasagalleryapp.presentation.SharedViewModel
 
 class ImageDetailFragment : Fragment(R.layout.fragment_image_detail) {
 

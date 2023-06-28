@@ -1,8 +1,6 @@
 package co.vance.nasagalleryapp.presentation.imageList
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -10,6 +8,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import co.vance.nasagalleryapp.R
 import co.vance.nasagalleryapp.databinding.ImageListFragmentBinding
+import co.vance.nasagalleryapp.presentation.SharedViewModel
 import co.vance.nasagalleryapp.util.DataState
 import dagger.hilt.android.AndroidEntryPoint
 

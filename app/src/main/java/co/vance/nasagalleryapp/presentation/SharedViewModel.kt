@@ -1,4 +1,4 @@
-package co.vance.nasagalleryapp.presentation.imageList
+package co.vance.nasagalleryapp.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -20,10 +20,6 @@ class SharedViewModel @Inject constructor(
     val images: LiveData<DataState<List<Nasa>>> get() = _images
 
     init {
-        getImages()
-    }
-
-    fun getImages() {
         viewModelScope.launch {
             repository.getNasa().collect {
                 _images.postValue(it)
