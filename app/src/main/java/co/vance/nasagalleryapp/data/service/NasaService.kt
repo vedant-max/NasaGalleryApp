@@ -6,7 +6,6 @@ import retrofit2.http.GET
 
 interface NasaService {
 
-
   @GET("nasa-pictures.json")
   suspend fun getNasa(): Response<List<Nasa>>
 }
